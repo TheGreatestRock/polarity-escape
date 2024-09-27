@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://cc766ijgo4j7x"]
+
+[ext_resource type="Script" path="res://scripts/magnetic_block.gd" id="1_0xjgm"]
+[ext_resource type="Texture2D" uid="uid://dtvo0dgfrkdkd" path="res://asset/sprites/metal_block.png" id="2_5ljwt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l106x"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1ryj"]
+atlas = ExtResource("2_5ljwt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qrvl"]
+atlas = ExtResource("2_5ljwt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0yp5o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1ryj")
+}],
+"loop": true,
+"name": &"Negative",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qrvl")
+}],
+"loop": true,
+"name": &"Positive",
+"speed": 5.0
+}]
+
+[node name="magnetic_block" type="RigidBody2D"]
+can_sleep = false
+lock_rotation = true
+script = ExtResource("1_0xjgm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_l106x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_0yp5o")
+animation = &"Negative"

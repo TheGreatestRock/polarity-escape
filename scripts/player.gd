@@ -4,6 +4,9 @@ extends CharacterBody2D
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
 
+var HAS_MAGNET = true
+var POLARITY = -1 # 1 for positive, -1 for negative
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -23,3 +26,6 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	
+func switch_polarity():
+	POLARITY *= -1
