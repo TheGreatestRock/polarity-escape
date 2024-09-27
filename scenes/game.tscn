@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://tik2eu166yo1" path="res://scenes/magnetic_block.tscn" id="3_pndlh"]
 [ext_resource type="PackedScene" uid="uid://xo1s4fuotv5d" path="res://scenes/coin.tscn" id="4_qbv73"]
 [ext_resource type="PackedScene" uid="uid://bs23q4mdd4401" path="res://scenes/killzone.tscn" id="5_erwdj"]
-[ext_resource type="PackedScene" uid="uid://ol4w154slepe" path="res://scenes/platform_blue.tscn" id="6_xv1td"]
-[ext_resource type="PackedScene" uid="uid://bir17wmf44dno" path="res://scenes/platform_red.tscn" id="7_rk1ou"]
+[ext_resource type="PackedScene" path="res://scenes/platform_blue.tscn" id="6_xv1td"]
+[ext_resource type="PackedScene" uid="uid://bbjvavh3i71gs" path="res://scenes/platform_red.tscn" id="7_rk1ou"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_57s8k"]
 
@@ -227,9 +227,11 @@ position = Vector2(101, -13)
 
 [node name="magnetic_block2" parent="." instance=ExtResource("3_pndlh")]
 position = Vector2(101, -36)
+POLARITY = 1
 
 [node name="magnetic_block3" parent="." instance=ExtResource("3_pndlh")]
 position = Vector2(130, -13)
+POLARITY = 1
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 use_parent_material = true
