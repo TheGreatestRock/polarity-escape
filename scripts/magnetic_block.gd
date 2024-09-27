@@ -21,6 +21,7 @@ func _ready():
 # Runs every physics frame.
 func _physics_process(delta: float) -> void:
 	apply_force_based_on_polarity(player)
+	print(player.POLARITY, POLARITY)
 
 
 
@@ -36,5 +37,8 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 # Function to apply force based on polarity
 func apply_force_based_on_polarity(body: Node2D) -> void:
 	var direction = (body.global_position - global_position).normalized()
-	var force = direction * POLARITY * force_strength
+	if POLARITY == body.POLARITY:
+		direction = -direction
+	var force = direction * force_strength
+	print(direction, POLARITY, force_strength)
 	apply_central_impulse(force)

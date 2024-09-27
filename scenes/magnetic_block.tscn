@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dtvo0dgfrkdkd" path="res://asset/sprites/metal_block.png" id="2_5ljwt"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6dwxf"]
-friction = 0.5
+friction = 0.15
 bounce = 0.2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oftfn"]
