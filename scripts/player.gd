@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 130.0
+const RUNNING_SPEED = 260.0
 const JUMP_VELOCITY = -300.0
 
 var HAS_MAGNET = true
@@ -19,11 +20,18 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+	#also check shift for running
 	var direction := Input.get_axis("ui_left", "ui_right")
+	var running := Input.is_action_pressed("ui_shift")
 	if direction:
-		velocity.x = direction * SPEED
+		if running:
+			velocity.x = direction * RUNNING_SPEED
+		else:
+			velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+
 
 	move_and_slide()
 	
