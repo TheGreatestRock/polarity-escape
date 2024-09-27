@@ -3,8 +3,8 @@ extends CharacterBody2D
 
 const SPEED = 130.0
 const RUNNING_SPEED = 260.0
-const JUMP_VELOCITY = -300.0
 
+var JUMP_VELOCITY = -300.0
 var HAS_MAGNET = true
 var POLARITY = -1 # 1 for positive, -1 for negative
 
@@ -42,3 +42,12 @@ func _physics_process(delta: float) -> void:
 func switch_polarity():
 	POLARITY *= -1
 	print(POLARITY)
+
+func get_polarity() -> int:
+	return POLARITY
+
+func has_magnet() -> bool:
+	return HAS_MAGNET
+	
+func set_jump_velocity(value: float) -> void:
+	JUMP_VELOCITY = value

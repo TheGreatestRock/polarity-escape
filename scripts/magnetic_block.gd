@@ -2,7 +2,7 @@ extends RigidBody2D
 
 
 @export var POLARITY: int = -1
-var force_strength: float = 100.0 
+var force_strength: float = 10.0 
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player: CharacterBody2D = $"../Player"
@@ -37,4 +37,4 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func apply_force_based_on_polarity(body: Node2D) -> void:
 	var direction = (body.global_position - global_position).normalized()
 	var force = direction * POLARITY * force_strength
-	#apply_central_impulse(force)
+	apply_central_impulse(force)
