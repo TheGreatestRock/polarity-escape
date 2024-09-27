@@ -10,6 +10,10 @@ var POLARITY = -1 # 1 for positive, -1 for negative
 
 
 func _physics_process(delta: float) -> void:
+	
+	if Input.is_action_just_pressed("change_polarity"):
+		switch_polarity()
+		
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -37,3 +41,4 @@ func _physics_process(delta: float) -> void:
 	
 func switch_polarity():
 	POLARITY *= -1
+	print(POLARITY)
