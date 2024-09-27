@@ -2,23 +2,24 @@ extends Node2D
 
 @onready var objets_dimension = get_tree().get_nodes_in_group("dimension")
 @onready var objets_reality = get_tree().get_nodes_in_group("reality")
-@onready var shader = get_node("ShaderMaterial")
+@onready var tilemap = get_node("TileMap")
 var in_dimension = false
 @onready var player: CharacterBody2D = $Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Le joueur commence dans la dimension 1 (collisions avec couche 1)
-	player.collision_layer = 1  # Le joueur appartient à la couche 1
-	player.collision_mask = 1  # Le joueur interagit avec les objets de la couche 1
+	 # Le joueur interagit avec les objets de la couche 1
 	
 	print(objets_dimension)
 	print(objets_reality)
+	
+	tilemap.modulate = Color(1, 1, 1, 1)  # Réinitialiser la couleur
+	
 	# Rendre les objets de la couche 1 visibles et activer leur collision
-	cacher_et_ajuster_collision(objets_dimension, 2)
-	afficher_et_ajuster_collision(objets_reality,1)
+	cacher_et_ajuster_collision(objets_dimension)
+	afficher_et_ajuster_collision(objets_reality)
 	# Assurez-vous que le shader est réinitialisé
-	#shader.set_shader_param("color_filter", Color(1, 1, 1, 1))  # Pas de filtre
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -31,12 +32,12 @@ func toggle_dimension():
 		in_dimension = true
 
 		# Le joueur interagit maintenant avec la couche 2
-		player.collision_layer = 2
-		player.collision_mask = 2
+		print(in_dimension)
+		tilemap.modulate = Color(1, 0.5, 0.7, 1)  # Appliquer une teinte rouge à la TileMap
 
 		# Activer la collision avec les objets de la couche 2 et désactiver la collision de la couche 1
-		afficher_et_ajuster_collision(objets_dimension, 2)
-		cacher_et_ajuster_collision(objets_reality,1)
+		afficher_et_ajuster_collision(objets_dimension)
+		cacher_et_ajuster_collision(objets_reality)
 		# Appliquer un filtre rouge via le shader pour signaler la dimension 2
 		#shader.set_shader_param("color_filter", Color(1, 0.5, 0.5, 1))  # Filtre rouge
 	else:
@@ -44,22 +45,20 @@ func toggle_dimension():
 		in_dimension = false
 
 		# Le joueur interagit maintenant avec la couche 1
-		player.collision_layer = 1
-		player.collision_mask = 1
-
+		tilemap.modulate = Color(1, 1, 1, 1)  # Réinitialiser la couleur
 		# Activer la collision avec les objets de la couche 1 et désactiver la collision de la couche 2
-		cacher_et_ajuster_collision(objets_dimension, 2)
-		afficher_et_ajuster_collision(objets_reality,1)
+		cacher_et_ajuster_collision(objets_dimension)
+		afficher_et_ajuster_collision(objets_reality)
 		# Réinitialiser le filtre du shader pour revenir à la dimension 1
 		#shader.set_shader_param("color_filter", Color(1, 1, 1, 1))  # Pas de filtre
 
-func afficher_et_ajuster_collision(groupe, couche):
+func afficher_et_ajuster_collision(groupe):
 	for obj in groupe:
 		obj.visible = true
-		obj.collision_layer = couche  # Assigner la bonne couche de collision pour les objets
-		obj.collision_mask = 1 | 2    # Les objets peuvent interagir avec les couches 1 et 2
+		obj.collision_layer = 1  # Assigner la bonne couche de collision pour les objets
+		obj.collision_mask = 2 | 3    # Les objets peuvent interagir avec les couches 1 et 2
 
-func cacher_et_ajuster_collision(groupe, couche):
+func cacher_et_ajuster_collision(groupe):
 	for obj in groupe:
 		obj.visible = false
 		obj.collision_layer = 0  # Désactiver la collision pour les objets cachés
