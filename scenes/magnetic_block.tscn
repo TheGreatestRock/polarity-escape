@@ -11,7 +11,7 @@ bounce = 0.2
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37ged"]
-size = Vector2(11.25, 13)
+size = Vector2(12.625, 7.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b1ryj"]
 atlas = ExtResource("2_5ljwt")
@@ -56,7 +56,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox/Area2D"]
-position = Vector2(0, -5.5)
+position = Vector2(-0.3125, -6.75)
 shape = SubResource("RectangleShape2D_37ged")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
