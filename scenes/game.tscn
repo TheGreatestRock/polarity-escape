@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cp17ne0v6qb3d"]
+[gd_scene load_steps=9 format=3 uid="uid://cp17ne0v6qb3d"]
 
 [ext_resource type="PackedScene" uid="uid://cwewbaiktbgx5" path="res://scenes/player.tscn" id="1_6858b"]
 [ext_resource type="Texture2D" uid="uid://beird111ftrku" path="res://asset/sprites/world_tileset.png" id="1_q7me0"]
+[ext_resource type="PackedScene" uid="uid://tik2eu166yo1" path="res://scenes/magnetic_block.tscn" id="3_pndlh"]
 [ext_resource type="PackedScene" uid="uid://xo1s4fuotv5d" path="res://scenes/coin.tscn" id="4_qbv73"]
 [ext_resource type="PackedScene" uid="uid://bs23q4mdd4401" path="res://scenes/killzone.tscn" id="5_erwdj"]
 
@@ -189,7 +190,8 @@ texture = ExtResource("1_q7me0")
 2:4/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_oqh2w"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 5
+physics_layer_0/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_ae0no")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_57s8k"]
@@ -220,3 +222,12 @@ position = Vector2(101, 74)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 shape = SubResource("WorldBoundaryShape2D_57s8k")
+
+[node name="magnetic_block" parent="." instance=ExtResource("3_pndlh")]
+position = Vector2(101, -13)
+
+[node name="magnetic_block2" parent="." instance=ExtResource("3_pndlh")]
+position = Vector2(101, -36)
+
+[node name="magnetic_block3" parent="." instance=ExtResource("3_pndlh")]
+position = Vector2(130, -13)

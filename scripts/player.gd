@@ -29,3 +29,24 @@ func _physics_process(delta: float) -> void:
 	
 func switch_polarity():
 	POLARITY *= -1
+
+
+
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("groups"):
+		print("ye")
+		body.collision_layer = 1
+		body.collision_layer = 1
+	else:
+		print("non")
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.is_in_group("groups"):
+		print("yes")
+		body.collision_layer = 3
+		body.collision_layer = 3
+	else:
+		print("no")
