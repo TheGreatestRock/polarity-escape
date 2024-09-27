@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://ol4w154slepe"]
+
+[ext_resource type="Texture2D" uid="uid://beird111ftrku" path="res://asset/sprites/world_tileset.png" id="1_d7up5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_np144"]
+size = Vector2(48, 14.5)
+
+[node name="Platform_blue" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("1_d7up5")
+region_enabled = true
+region_rect = Rect2(32.0666, 225.428, 15.9943, 14.4313)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(16, -1)
+texture = ExtResource("1_d7up5")
+region_enabled = true
+region_rect = Rect2(32.0666, 225.428, 15.9943, 14.4313)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(32, -1)
+texture = ExtResource("1_d7up5")
+region_enabled = true
+region_rect = Rect2(32.0666, 225.428, 15.9943, 14.4313)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, -1)
+shape = SubResource("RectangleShape2D_np144")
+one_way_collision = true
