@@ -5,7 +5,7 @@ const SPEED = 130.0
 const RUNNING_SPEED = 260.0
 
 var JUMP_VELOCITY = -300.0
-var HAS_MAGNET = true
+var HAS_MAGNET = false
 var POLARITY = -1 # 1 for positive, -1 for negative
 
 

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyx8b0ihgcxe3"]
+
+[ext_resource type="PackedScene" uid="uid://bn0fl3vkuksxw" path="res://scenes/pause_menu.tscn" id="1_fjdjg"]
+[ext_resource type="PackedScene" uid="uid://nj2yykleir3" path="res://scenes/timer.tscn" id="2_gtls2"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_fjdjg")]
+
+[node name="TimerText" parent="." instance=ExtResource("2_gtls2")]

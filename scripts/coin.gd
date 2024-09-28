@@ -3,5 +3,6 @@ extends Area2D
 
 
 func _on_body_entered(body: Node2D) -> void:
-	print(" +1")
-	queue_free()
+	if body is CharacterBody2D:
+		body.HAS_MAGNET = true
+		queue_free()

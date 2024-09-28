@@ -20,7 +20,8 @@ func _ready():
 
 # Runs every physics frame.
 func _physics_process(delta: float) -> void:
-	apply_force_based_on_polarity(player)
+	if player.HAS_MAGNET:
+		apply_force_based_on_polarity(player)
 
 
 
