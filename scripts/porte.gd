@@ -10,7 +10,7 @@ var joueur_proche = null  # Référence au joueur si celui-ci est proche de la p
 # Vérifie si le joueur appuie sur la touche d'interaction pour se téléporter
 func _process(delta):
 	print(joueur_proche)
-	if joueur_proche and Input.is_action_just_pressed("teleport"):
+	if joueur_proche and Input.is_action_just_pressed("ui_up"):
 		joueur_proche.global_position = destination  # Téléporte le joueur à la destination
 
 
