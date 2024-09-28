@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cp17ne0v6qb3d"]
+[gd_scene load_steps=17 format=4 uid="uid://cp17ne0v6qb3d"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_0nco5"]
 [ext_resource type="PackedScene" uid="uid://cwewbaiktbgx5" path="res://scenes/player.tscn" id="1_6858b"]
@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://tik2eu166yo1" path="res://scenes/magnetic_block.tscn" id="3_pndlh"]
 [ext_resource type="PackedScene" uid="uid://xo1s4fuotv5d" path="res://scenes/coin.tscn" id="4_qbv73"]
 [ext_resource type="PackedScene" uid="uid://bs23q4mdd4401" path="res://scenes/killzone.tscn" id="5_erwdj"]
-[ext_resource type="PackedScene" uid="uid://bi5orkkq2wtk3" path="res://scenes/platform_blue.tscn" id="6_xv1td"]
+[ext_resource type="PackedScene" uid="uid://ol4w154slepe" path="res://scenes/platform_blue.tscn" id="6_xv1td"]
 [ext_resource type="PackedScene" uid="uid://bbjvavh3i71gs" path="res://scenes/platform_red.tscn" id="7_rk1ou"]
 [ext_resource type="PackedScene" uid="uid://chi3f3l7a80ya" path="res://scenes/polarity_area.tscn" id="9_h2m6f"]
+[ext_resource type="Script" path="res://scenes/porte.gd" id="10_rm32b"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_57s8k"]
 
@@ -205,6 +206,9 @@ size = Vector2(177, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8wvl"]
 size = Vector2(176, 80)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q880t"]
+size = Vector2(14, 27)
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_0nco5")
 
@@ -265,3 +269,14 @@ shape = SubResource("RectangleShape2D_qupbe")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PolarityNegative"]
 position = Vector2(472, -40)
 shape = SubResource("RectangleShape2D_v8wvl")
+
+[node name="Porte" type="Area2D" parent="."]
+position = Vector2(1256, -48)
+collision_mask = 4
+script = ExtResource("10_rm32b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Porte"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_q880t")
+
+[connection signal="body_entered" from="Porte" to="Porte" method="_on_body_entered"]
