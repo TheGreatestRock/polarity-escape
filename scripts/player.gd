@@ -8,6 +8,10 @@ var JUMP_VELOCITY = -300.0
 var HAS_MAGNET = false
 var POLARITY = -1 # 1 for positive, -1 for negative
 
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
+func _ready() -> void:
+	animated_sprite_2d.speed_scale = 1.0
 
 func _physics_process(delta: float) -> void:
 	
@@ -28,12 +32,23 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("ui_left", "ui_right")
 	var running := Input.is_action_pressed("ui_shift")
 	if direction:
+		if direction < 0:
+			#set the animation to walk then flip the sprite
+			animated_sprite_2d.animation = "walk"
+			animated_sprite_2d.flip_h = true
+		else:
+			animated_sprite_2d.animation = "walk"
+			animated_sprite_2d.flip_h = false
+
 		if running:
+			animated_sprite_2d.speed_scale = 2.0
 			velocity.x = direction * RUNNING_SPEED
 		else:
+			animated_sprite_2d.speed_scale = 1.0
 			velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		animated_sprite_2d.animation = "idle"
 
 
 

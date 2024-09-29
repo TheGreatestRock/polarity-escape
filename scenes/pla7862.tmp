@@ -118,7 +118,7 @@ position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_nu6ue")
 animation = &"walk"
 autoplay = "idle"
-frame_progress = 0.286578
+frame_progress = 0.786579
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_smtth")
