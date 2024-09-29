@@ -26,6 +26,8 @@ func _ready() -> void:
 		print(POLARITY)
 		JUMP_VELOCITY = player_manager.get_jump_velocity()
 		position = player_manager.get_base_pos()
+	if Music:
+		Music.play()
 
 func _physics_process(delta: float) -> void:
 	
