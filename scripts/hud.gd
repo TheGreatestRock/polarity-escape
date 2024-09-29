@@ -1,11 +1,11 @@
 extends CanvasLayer
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var player: CharacterBody2D = $"../Player"
 
 func _ready() -> void:
-	if PlayerManager:
-		if PlayerManager.get_polarity() != 0:
-			set_polarity(1)
+	player.switch_polarity()
+	player.switch_polarity()
 
 func set_polarity(polarity: int) -> void:
 	if animated_sprite_2d:
