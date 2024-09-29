@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var destination: Vector2  # Position de destination de la téléportation
+@export var destination: Vector2 = Vector2(1892, 1) # Position de destination de la téléportation
 @onready var player: CharacterBody2D = $"../Player"
 var joueur_proche = null  # Référence au joueur si celui-ci est proche de la porte
 
