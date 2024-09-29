@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b01b6pexexnil"]
+[gd_scene load_steps=3 format=3 uid="uid://b01b6pexexnil"]
 
 [ext_resource type="Script" path="res://scripts/options_menu.gd" id="1_qjmq7"]
+[ext_resource type="LabelSettings" uid="uid://d0fwuptej0tsx" path="res://pixelated_label.tres" id="2_lfgw5"]
 
 [node name="OptionMenu" type="Control"]
 layout_mode = 3
@@ -34,9 +35,10 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Volume "
+label_settings = ExtResource("2_lfgw5")
 
 [node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 
 [node name="Fullscreen" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -45,6 +47,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Fullscreen"]
 layout_mode = 2
 text = "Fullscreen "
+label_settings = ExtResource("2_lfgw5")
 
 [node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/Fullscreen"]
 layout_mode = 2
@@ -53,12 +56,30 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Save" type="Button" parent="MarginContainer/VBoxContainer/SaveBack"]
+custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
-text = "save"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/SaveBack/Save"]
+layout_mode = 2
+offset_left = 26.5
+offset_top = -2.0
+offset_right = 148.5
+offset_bottom = 40.0
+text = "Save"
+label_settings = ExtResource("2_lfgw5")
 
 [node name="Back" type="Button" parent="MarginContainer/VBoxContainer/SaveBack"]
+custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
-text = "back"
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/SaveBack/Back"]
+layout_mode = 2
+offset_left = 29.5
+offset_top = -1.0
+offset_right = 151.5
+offset_bottom = 41.0
+text = "Back"
+label_settings = ExtResource("2_lfgw5")
 
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/Fullscreen/CheckBox" to="." method="_on_check_box_toggled"]

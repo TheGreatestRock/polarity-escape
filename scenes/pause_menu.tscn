@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bn0fl3vkuksxw"]
+[gd_scene load_steps=3 format=3 uid="uid://bn0fl3vkuksxw"]
 
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_2f4gr"]
+[ext_resource type="LabelSettings" uid="uid://d0fwuptej0tsx" path="res://pixelated_label.tres" id="2_t3vod"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -32,18 +33,34 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Continue" type="Button" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-text = "Play"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Continue"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 1.0
+offset_right = 120.0
+offset_bottom = 43.0
+text = "Continue"
+label_settings = ExtResource("2_t3vod")
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Quit"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 1.0
+offset_right = 145.0
+offset_bottom = 43.0
 text = "Title Screen"
+label_settings = ExtResource("2_t3vod")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -1,10 +1,56 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyx8b0ihgcxe3"]
+[gd_scene load_steps=8 format=3 uid="uid://dyx8b0ihgcxe3"]
 
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_8kiy1"]
 [ext_resource type="PackedScene" uid="uid://bn0fl3vkuksxw" path="res://scenes/pause_menu.tscn" id="1_fjdjg"]
 [ext_resource type="PackedScene" uid="uid://nj2yykleir3" path="res://scenes/timer.tscn" id="2_gtls2"]
+[ext_resource type="Texture2D" uid="uid://dd02bt55i0lym" path="res://asset/sprites/big_magnet.png" id="3_ktv5s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifdhe"]
+atlas = ExtResource("3_ktv5s")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hva3"]
+atlas = ExtResource("3_ktv5s")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gh7ql"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifdhe")
+}],
+"loop": true,
+"name": &"Negative",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hva3")
+}],
+"loop": true,
+"name": &"Positive",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_8kiy1")
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_fjdjg")]
 
 [node name="TimerText" parent="." instance=ExtResource("2_gtls2")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 29.0
+offset_top = 567.0
+offset_right = 105.0
+offset_bottom = 634.0
+color = Color(1, 1, 1, 0.247059)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(66, 605)
+sprite_frames = SubResource("SpriteFrames_gh7ql")
