@@ -332,11 +332,11 @@ position = Vector2(2455, -168)
 [node name="Platform_red2" parent="." groups=["reality"] instance=ExtResource("7_rk1ou")]
 position = Vector2(2533, -167)
 
+[node name="Platform_red6" parent="." groups=["reality"] instance=ExtResource("7_rk1ou")]
+position = Vector2(3350, -360)
+
 [node name="Platform2" parent="." groups=["dimension"] instance=ExtResource("6_xv1td")]
 position = Vector2(2615, -167)
-
-[node name="Platform3" parent="." groups=["dimension"] instance=ExtResource("6_xv1td")]
-position = Vector2(3353, -358)
 
 [node name="magnetic_block4" parent="." instance=ExtResource("3_pndlh")]
 position = Vector2(2073, -46)
