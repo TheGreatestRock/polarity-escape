@@ -388,7 +388,7 @@ shape = SubResource("RectangleShape2D_q880t")
 position = Vector2(1256, -48)
 collision_mask = 4
 script = ExtResource("10_rm32b")
-destination = Vector2(4216, -120)
+destination = Vector2(4216, -150)
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="Porte2"]
 position = Vector2(2336, -368)
