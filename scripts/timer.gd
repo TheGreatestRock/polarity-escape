@@ -4,13 +4,18 @@ var time_elapsed: float = 0.0  # Store elapsed time
 @onready var timer_label: Label = $TimerLabel
 
 func _ready() -> void:
-	# Hide the timer label
-	#timer_label.hide()
-	pass
+	if PlayerManager:
+		var player_manager = PlayerManager
+		time_elapsed = player_manager.get_elapsed_time()
+
+
 # Called every frame. Updates the timer label.
 func _process(delta: float) -> void:
 	# Update the timer
 	time_elapsed += delta
+	if PlayerManager:
+		var player_manager = PlayerManager
+		player_manager.set_elapsed_time(time_elapsed)
 	
 	# Format the time (minutes:seconds.milliseconds)
 	var minutes = int(time_elapsed) / 60

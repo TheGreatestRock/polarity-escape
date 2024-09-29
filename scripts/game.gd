@@ -10,8 +10,6 @@ var in_dimension = false
 func _ready():
 	# Le joueur commence dans la dimension 1 (collisions avec couche 1)
 	 # Le joueur interagit avec les objets de la couche 1
-	print(objets_dimension)
-	print(objets_reality)
 
 	
 	tilemap.modulate = Color(1, 1, 1, 1)  # Réinitialiser la couleur
@@ -32,7 +30,6 @@ func toggle_dimension():
 		in_dimension = true
 
 		# Le joueur interagit maintenant avec la couche 2
-		print(in_dimension)
 		tilemap.modulate = Color(1, 0.5, 0.7, 1)  # Appliquer une teinte rouge à la TileMap
 
 		# Activer la collision avec les objets de la couche 2 et désactiver la collision de la couche 1

@@ -6,14 +6,26 @@ const RUNNING_SPEED = 260.0
 
 var JUMP_VELOCITY = -300.0
 var HAS_MAGNET = false
-var POLARITY = -1 # 1 for positive, -1 for negative
+var POLARITY = 0 # 1 for positive, -1 for negative
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 @onready var hud: CanvasLayer = $"../HUD"
 
+@onready var camera_2d: Camera2D = $Camera2D
+@onready var timer: Timer = $Camera2D/Timer
+
 func _ready() -> void:
 	animated_sprite_2d.speed_scale = 1.0
+	# check the playermanager to keep track of multiple things even after reloading the scene
+	hud.set_polarity(POLARITY)
+	if PlayerManager:
+		var player_manager = PlayerManager
+		HAS_MAGNET = player_manager.get_magnet()
+		POLARITY = player_manager.get_polarity()
+		print(POLARITY)
+		JUMP_VELOCITY = player_manager.get_jump_velocity()
+		position = player_manager.get_base_pos()
 
 func _physics_process(delta: float) -> void:
 	
@@ -60,8 +72,14 @@ func _physics_process(delta: float) -> void:
 	
 func switch_polarity():
 	if HAS_MAGNET:
+		if POLARITY == 0:
+			POLARITY = -1
 		POLARITY *= -1
 		hud.set_polarity(POLARITY)
+		if PlayerManager:
+			var player_manager = PlayerManager
+			player_manager.set_polarity(POLARITY)
+
 		print(POLARITY)
 
 func get_polarity() -> int:

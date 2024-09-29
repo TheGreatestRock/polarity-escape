@@ -25,12 +25,14 @@ func _update_animation() -> void:
 
 # Called when another body enters the area.
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	set_collision_layer(3)
+	if body is CharacterBody2D or body is RigidBody2D:
+		set_collision_layer(3)
 
 
 # Called when another body exits the area.
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	set_collision_layer(2)
+	if body is CharacterBody2D or body is RigidBody2D:
+		set_collision_layer(2)
 
 
 # Applies force based on polarity difference between this and the player.
